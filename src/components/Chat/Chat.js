@@ -16,7 +16,7 @@ const Chat = ({ location }) => {
   const [users, setUsers] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = 'https://hsduiii-react-chat.herokuapp.com/';
+  const ENDPOINT = process.env.SERVER_URL || "http://127.0.0.1:5000";
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
@@ -65,6 +65,7 @@ const Chat = ({ location }) => {
   }
 
   console.log(message, messages);
+  console.log("SERVER ENDPOINT: ", ENDPOINT)
 
   return (
     <div className="outerContainer">
